@@ -27,16 +27,7 @@ posts = [
 
 # Create your views here.
 def home(request):
-    html = ""
-    for post in posts:
-        html += f'''
-            <div>
-            <a href = "/post/{post['id']}/">
-                <h1>{post['id']} - {post['title']}</h1></a>
-                <p>{post['content']}</p>
-            </div>
-'''
-    return HttpResponse(html)
+    return render(request,'posts/home.html', {"posts":posts, 'username':'benson'})
 
 
 def post(request, id):
@@ -47,11 +38,7 @@ def post(request, id):
             valid_id = True
             break
     if valid_id:
-        html = f'''
-            <h1>{post_dict['title']}</h1>
-            <p>{post_dict['content']}
-        '''
-        return HttpResponse(html)
+        return render(request, 'posts/post.html', {'post_dict': post_dict})
     else:
         return HttpResponseNotFound("Post not available")
     
