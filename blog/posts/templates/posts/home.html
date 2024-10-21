@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+{% comment %} {% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'posts/home.css' %}">
+{% endblock css %} {% endcomment %}
+
+    {% block title %} Posts {% endblock title %}
+
     {% block body %}
         <h1>Posts - {{username|capfirst|truncatechars:4}}</h1>
             {% for post in posts %}
