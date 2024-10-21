@@ -4,9 +4,13 @@
     <link rel="stylesheet" href="{% static 'posts/post.css' %}">
 {% endblock css %} {% endcomment %}
 
+<div>
+<div class="postContainer">
 {% block title %} Post {{post_dict.id}} {% endblock title %}
 
 {% block body %}
     <h1>{{post_dict.title}}</h1>
     <p>{{post_dict.content}}</p>
 {% endblock %}
+</div>
+</div>

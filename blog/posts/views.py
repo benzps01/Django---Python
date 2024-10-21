@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-from django.urls import reverse
+from django.http import HttpResponseNotFound, Http404
 
 posts = [
     {
@@ -40,9 +39,4 @@ def post(request, id):
     if valid_id:
         return render(request, 'posts/post.html', {'post_dict': post_dict})
     else:
-        return HttpResponseNotFound("Post not available")
-    
-
-def google(request, id):
-    url = reverse("post", args=[id])
-    return HttpResponseRedirect(url)
+        raise Http404()
